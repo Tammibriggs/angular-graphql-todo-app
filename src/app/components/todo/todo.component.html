@@ -9,7 +9,7 @@
       htmlFor="checkbox-{{id}}" 
       [class.checked]="checked"
       class="checkbox-custom-label" 
-      (click)="checked = !checked" ></label>
+      (click)="completeTodo()" ></label>
   </div>
   <div class='todo__body'>
     <h2>{{title}}</h2>
@@ -21,7 +21,7 @@
           (click)="editTodo()">
           Edit
         </button>
-        <button class='todo__deleteButton'>Delete</button>
+        <button class='todo__deleteButton' (click)="deleteTodo()">Delete</button>
       </div>
       <button 
         (click)="viewTodo()">

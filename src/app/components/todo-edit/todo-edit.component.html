@@ -1,5 +1,5 @@
 <app-modal modalLable='Edit' [onClose]="onClose">
-  <form class='todo-form' name='addTodo'>
+  <form class='todo-form' name='addTodo' (ngSubmit)="editTodo($event)">
     <input 
       type='text' 
       name='title' 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -15,7 +16,7 @@ export class TodoComponent implements OnInit {
   checked!: boolean;
   open = {edit: false, view: false}
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   viewTodo() {
     this.open = {...this.open, view: true}
@@ -23,6 +24,14 @@ export class TodoComponent implements OnInit {
  
   editTodo() {
     this.open = {...this.open, edit: true}
+  }
+
+  deleteTodo() {
+    this.todoService.deleteTodo(this.id).subscribe()
+  }
+
+  completeTodo() {
+    this.todoService.completeTodo(this.id, !this.checked).subscribe()
   }
 
   handleClose (){
